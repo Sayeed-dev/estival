@@ -4,9 +4,21 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { User, Search, ShoppingBag, Menu, X } from "lucide-react";
 
+// Array of search placeholders to cycle through
+const searchPlaceholders = [
+  "Search for 'UV Sunglasses'...",
+  "Search for 'Summer Outfits'...",
+  "Search for 'Sunscreen'...",
+  "Search for 'Beach Accessories'...",
+];
+
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // New States for Search Feature
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [placeholderIndex, setPlaceholderIndex] = useState(0);
 
   // 1. Handle Scroll for Sticky Navbar
   useEffect(() => {
@@ -17,78 +29,121 @@ export default function Navbar() {
 
   // 2. Prevent background scrolling when mobile menu is open
   useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "unset";
   }, [isMobileMenuOpen]);
+
+  // 3. Handle Animated Placeholder Rotation
+  useEffect(() => {
+    let interval; // Removed TypeScript specific type declaration
+    if (isSearchOpen) {
+      interval = setInterval(() => {
+        setPlaceholderIndex((prev) => (prev + 1) % searchPlaceholders.length);
+      }, 3000);
+    }
+    return () => clearInterval(interval);
+  }, [isSearchOpen]);
 
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between transition-all duration-500 ease-in-out text-brand-text
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out text-brand-text
           ${
-            isScrolled
-              ? "py-4 px-6 md:px-12 bg-brand-bg/90 backdrop-blur-md shadow-sm"
-              : "py-6 px-6 md:px-24 bg-transparent"
+            isScrolled || isSearchOpen
+              ? "bg-brand-bg/95 backdrop-blur-md shadow-sm"
+              : "bg-transparent"
           }
         `}
       >
-        {/* Logo (Added z-50 so it stays above the mobile overlay) */}
-        <Link href="/" className="flex items-center gap-2 z-50 relative">
-          <span className="text-3xl font-bold italic tracking-tighter">
-            Solari
-          </span>
-        </Link>
+        {/* Main Navbar Container */}
+        <div
+          className={`flex items-center justify-between transition-all duration-500 mx-auto w-full
+          ${isScrolled || isSearchOpen ? "py-4 px-6 md:px-12" : "py-6 px-6 md:px-24"}
+        `}
+        >
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2 z-50 relative">
+            <span className="text-3xl font-bold italic tracking-tighter">
+              Solari
+            </span>
+          </Link>
 
-        {/* Desktop Links (Hidden on small screens) */}
-        <div className="hidden md:flex items-center gap-8 font-medium">
-          <Link href="/" className="hover:text-brand-primary transition-colors">
-            Home
-          </Link>
-          <Link
-            href="/products"
-            className="hover:text-brand-primary transition-colors"
-          >
-            Products
-          </Link>
-          <Link
-            href="/my-profile"
-            className="hover:text-brand-primary transition-colors"
-          >
-            My Profile
-          </Link>
+          {/* Desktop Links */}
+          <div className="hidden md:flex items-center gap-8 font-medium">
+            <Link
+              href="/"
+              className="hover:text-brand-primary transition-colors"
+            >
+              Home
+            </Link>
+            <Link
+              href="/products"
+              className="hover:text-brand-primary transition-colors"
+            >
+              Products
+            </Link>
+            <Link
+              href="/my-profile"
+              className="hover:text-brand-primary transition-colors"
+            >
+              My Profile
+            </Link>
+          </div>
+
+          {/* Icons & Hamburger Menu */}
+          <div className="flex items-center gap-4 md:gap-5 z-50 relative">
+            <button className="hidden sm:block hover:text-brand-primary transition-colors cursor-pointer">
+              <User size={22} strokeWidth={1.5} />
+            </button>
+
+            {/* Search Icon Toggle */}
+            <button
+              onClick={() => setIsSearchOpen(!isSearchOpen)}
+              className="hover:text-brand-primary transition-colors cursor-pointer"
+            >
+              {isSearchOpen ? (
+                <X size={22} strokeWidth={1.5} />
+              ) : (
+                <Search size={22} strokeWidth={1.5} />
+              )}
+            </button>
+
+            <button className="hover:text-brand-primary transition-colors cursor-pointer relative">
+              <ShoppingBag size={22} strokeWidth={1.5} />
+              <span className="absolute -top-1 -right-2 bg-brand-accent text-white text-[10px] font-bold h-4 w-4 rounded-full flex items-center justify-center">
+                2
+              </span>
+            </button>
+
+            {/* Hamburger Button */}
+            <button
+              className="md:hidden ml-2 hover:text-brand-primary transition-colors cursor-pointer"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? (
+                <X size={28} strokeWidth={1.5} />
+              ) : (
+                <Menu size={28} strokeWidth={1.5} />
+              )}
+            </button>
+          </div>
         </div>
 
-        {/* Icons & Hamburger Menu */}
-        <div className="flex items-center gap-4 md:gap-5 z-50 relative">
-          {/* Hide Search and User on mobile to keep the header clean, keep Cart and Hamburger */}
-          <button className="hidden sm:block hover:text-brand-primary transition-colors cursor-pointer">
-            <User size={22} strokeWidth={1.5} />
-          </button>
-          <button className="hidden sm:block hover:text-brand-primary transition-colors cursor-pointer">
-            <Search size={22} strokeWidth={1.5} />
-          </button>
-
-          <button className="hover:text-brand-primary transition-colors cursor-pointer relative">
-            <ShoppingBag size={22} strokeWidth={1.5} />
-            <span className="absolute -top-1 -right-2 bg-brand-accent text-white text-[10px] font-bold h-4 w-4 rounded-full flex items-center justify-center">
-              2
-            </span>
-          </button>
-
-          {/* Hamburger Menu Button (Visible only on mobile) */}
-          <button
-            className="md:hidden ml-2 hover:text-brand-primary transition-colors cursor-pointer"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? (
-              <X size={28} strokeWidth={1.5} />
-            ) : (
-              <Menu size={28} strokeWidth={1.5} />
-            )}
-          </button>
+        {/* 🌟 Elegant Slide-Down Search Drawer */}
+        <div
+          className={`w-full overflow-hidden transition-all duration-500 ease-in-out border-b border-brand-primary/10 bg-brand-bg/95 backdrop-blur-md
+            ${isSearchOpen ? "max-h-32 py-4 opacity-100" : "max-h-0 py-0 opacity-0 border-transparent"}
+          `}
+        >
+          <div className="max-w-3xl mx-auto px-6 relative flex items-center">
+            <Search className="absolute left-10 text-brand-text/50" size={20} />
+            <input
+              type="text"
+              key={placeholderIndex}
+              placeholder={searchPlaceholders[placeholderIndex]}
+              className="w-full bg-brand-secondary/30 border border-brand-primary/30 rounded-full py-3 pl-12 pr-6 focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/50 text-brand-text placeholder:text-brand-text/50 placeholder:transition-all placeholder:duration-500"
+              autoFocus={isSearchOpen}
+            />
+          </div>
         </div>
       </nav>
 
@@ -120,18 +175,6 @@ export default function Navbar() {
           >
             My Profile
           </Link>
-
-          {/* Mobile specific icons for Search/User */}
-          <div className="flex gap-8 mt-8 border-t border-brand-primary/20 pt-8">
-            <button className="flex flex-col items-center gap-2 text-sm text-brand-text/70 hover:text-brand-primary">
-              <Search size={24} strokeWidth={1.5} />
-              Search
-            </button>
-            <button className="flex flex-col items-center gap-2 text-sm text-brand-text/70 hover:text-brand-primary">
-              <User size={24} strokeWidth={1.5} />
-              Account
-            </button>
-          </div>
         </div>
       </div>
     </>
