@@ -1,26 +1,46 @@
 @import "tailwindcss";
+@import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-brand-primary: #d4a373;
+  --color-brand-secondary: #faedcd;
+  --color-brand-bg: #fefae0;
+  --color-brand-text: #1e293b;
+  --color-brand-accent: #e63946;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  body {
+    @apply bg-brand-bg text-brand-text antialiased selection:bg-brand-primary/30;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* বড় হেডিং (যেমন: হিরো সেকশনের টাইটেল) */
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-brand-text;
+  }
+
+  /* ছোট হেডিং (যেমন: সেকশন বা কার্ডের টাইটেল) */
+  h2 {
+    @apply text-2xl md:text-3xl font-bold text-brand-text;
+  }
+
+  /* ডিফল্ট প্যারাগ্রাফ */
+  p {
+    @apply text-base md:text-lg text-brand-text/80 leading-relaxed;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ২. কম্পোনেন্ট লেয়ার: রিইউজেবল কাস্টম ক্লাস */
+@layer components {
+  /* মেইন কল-টু-অ্যাকশন বাটন */
+  .btn-primary {
+    @apply px-6 py-3 bg-brand-accent text-white font-medium rounded-xl 
+           hover:bg-brand-accent/90 transition-all shadow-md active:scale-95 cursor-pointer inline-block text-center;
+  }
+
+  /* সেকেন্ডারি বাটন (যেমন: View Details) */
+  .btn-outline {
+    @apply px-6 py-3 border-2 border-brand-primary text-brand-text font-medium rounded-xl 
+           hover:bg-brand-primary/10 transition-all active:scale-95 cursor-pointer inline-block text-center;
+  }
 }
