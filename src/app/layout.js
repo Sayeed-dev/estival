@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import "./globals.css";
 import Nav from "@/components/Nav";
 
@@ -15,6 +16,7 @@ export default function RootLayout({ children }) {
       <body className="min-h-full flex flex-col">
         <Nav/>
         {children}
+        <Footer/>
       </body>
     </html>
   );
