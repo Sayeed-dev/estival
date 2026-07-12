@@ -1,5 +1,5 @@
 import "./globals.css";
-
+import Nav from "@/components/Nav";
 
 export const metadata = {
   title: "Estival",
@@ -13,6 +13,7 @@ export default function RootLayout({ children }) {
       className="h-full antialiased"
     >
       <body className="min-h-full flex flex-col">
+        <Nav/>
         {children}
       </body>
     </html>
