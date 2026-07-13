@@ -1,6 +1,7 @@
 import Footer from "@/components/Footer";
 import "./globals.css";
 import Nav from "@/components/Nav";
+import Hero from "@/components/Hero";
 
 export const metadata = {
   title: "Estival",
@@ -14,7 +15,8 @@ export default function RootLayout({ children }) {
       className="h-full antialiased"
     >
       <body className="min-h-full flex flex-col">
-        <Nav/>
+        <Nav />
+        <Hero />
         {children}
         <Footer/>
       </body>
