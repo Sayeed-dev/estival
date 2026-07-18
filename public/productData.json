@@ -1,0 +1,90 @@
+[
+  {
+    "id": 1,
+    "name": "UV Protection Sunglasses",
+    "brand": "SunShade",
+    "price": 15,
+    "rating": 4.7,
+    "stock": 10,
+    "description": "Stylish UV protection sunglasses perfect for summer outings.",
+    "image": "https://images.pexels.com/photos/2371968/pexels-photo-2371968.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "category": "Accessories"
+  },
+  {
+    "id": 2,
+    "name": "Beach Flip Flops",
+    "brand": "SandyStep",
+    "price": 8,
+    "rating": 4.4,
+    "stock": 25,
+    "description": "Lightweight, comfortable flip flops made for sandy beach days.",
+    "image": "https://images.pexels.com/photos/4996974/pexels-photo-4996974.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "category": "Footwear"
+  },
+  {
+    "id": 3,
+    "name": "Striped Beach Towel",
+    "brand": "CoastLine",
+    "price": 18,
+    "rating": 4.6,
+    "stock": 15,
+    "description": "Soft, quick-drying cotton beach towel with a classic striped pattern.",
+    "image": "https://images.pexels.com/photos/30982095/pexels-photo-30982095.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "category": "Beach Gear"
+  },
+  {
+    "id": 4,
+    "name": "SPF 50 Sunscreen Lotion",
+    "brand": "SunGuard",
+    "price": 12,
+    "rating": 4.8,
+    "stock": 30,
+    "description": "Broad-spectrum SPF 50 sunscreen that protects skin during long summer days.",
+    "image": "https://images.pexels.com/photos/20896014/pexels-photo-20896014.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "category": "Skincare"
+  },
+  {
+    "id": 5,
+    "name": "Wide Brim Straw Sun Hat",
+    "brand": "PalmBreeze",
+    "price": 14,
+    "rating": 4.5,
+    "stock": 20,
+    "description": "Woven straw sun hat with a wide brim for extra shade on sunny days.",
+    "image": "https://images.pexels.com/photos/8093145/pexels-photo-8093145.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "category": "Accessories"
+  },
+  {
+    "id": 6,
+    "name": "Portable Beach Cooler",
+    "brand": "ChillPack",
+    "price": 22,
+    "rating": 4.3,
+    "stock": 12,
+    "description": "Insulated portable cooler to keep drinks and snacks cold at the beach.",
+    "image": "https://images.pexels.com/photos/1038342/pexels-photo-1038342.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "category": "Beach Gear"
+  },
+  {
+    "id": 7,
+    "name": "Insulated Water Bottle",
+    "brand": "HydroFlow",
+    "price": 16,
+    "rating": 4.7,
+    "stock": 28,
+    "description": "Keeps water cold for hours, a summer essential for staying hydrated.",
+    "image": "https://images.pexels.com/photos/3737800/pexels-photo-3737800.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "category": "Accessories"
+  },
+  {
+    "id": 8,
+    "name": "Beach Umbrella",
+    "brand": "ShadeMate",
+    "price": 25,
+    "rating": 4.5,
+    "stock": 9,
+    "description": "Sturdy beach umbrella that provides wide shade coverage on hot summer days.",
+    "image": "https://images.pexels.com/photos/12995675/pexels-photo-12995675.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "category": "Beach Gear"
+  }
+]

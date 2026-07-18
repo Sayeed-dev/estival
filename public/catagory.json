@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "Accessories",
+    "slug": "accessories",
+    "image": "https://images.pexels.com/photos/2371968/pexels-photo-2371968.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "productCount": 3
+  },
+  {
+    "id": 2,
+    "name": "Footwear",
+    "slug": "footwear",
+    "image": "https://images.pexels.com/photos/4996974/pexels-photo-4996974.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "productCount": 1
+  },
+  {
+    "id": 3,
+    "name": "Beach Gear",
+    "slug": "beach-gear",
+    "image": "https://images.pexels.com/photos/12995675/pexels-photo-12995675.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "productCount": 5
+  },
+  {
+    "id": 4,
+    "name": "Skincare",
+    "slug": "skincare",
+    "image": "https://images.pexels.com/photos/20896014/pexels-photo-20896014.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "productCount": 1
+  },
+  {
+    "id": 5,
+    "name": "Water Sports",
+    "slug": "water-sports",
+    "image": "https://images.pexels.com/photos/4603866/pexels-photo-4603866.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "productCount": 2
+  }
+]
